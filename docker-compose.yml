@@ -1,0 +1,16 @@
+version: '2'
+services:
+    web:
+        build: .
+        ports:
+            - "5000:5000"
+        volumes:
+            - .:/webapp
+        depends_on:
+            - mongo
+        links: 
+          - mongo
+    mongo:
+        image: mongo:3.4-jessie
+        volumes:
+          - .mongo:/data/db
